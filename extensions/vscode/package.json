@@ -1,0 +1,46 @@
+{
+  "name": "browser-ai-bridge-vscode",
+  "displayName": "Browser AI Bridge",
+  "description": "Use the local Browser AI Bridge API from VS Code.",
+  "version": "0.1.0",
+  "publisher": "local",
+  "license": "UNLICENSED",
+  "engines": { "vscode": "^1.90.0" },
+  "categories": ["Other"],
+  "activationEvents": [
+    "onCommand:browserAiBridge.ask",
+    "onCommand:browserAiBridge.explain",
+    "onCommand:browserAiBridge.fix",
+    "onCommand:browserAiBridge.refactor",
+    "onCommand:browserAiBridge.optimize"
+  ],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "configuration": {
+      "title": "Browser AI Bridge",
+      "properties": {
+        "browserAiBridge.url": {
+          "type": "string",
+          "default": "http://127.0.0.1:8787",
+          "description": "Base URL of the local Browser AI Bridge API."
+        },
+        "browserAiBridge.model": {
+          "type": "string",
+          "default": "gemini-ui",
+          "description": "Browser-backed model identifier."
+        }
+      }
+    },
+    "commands": [
+      { "command": "browserAiBridge.ask", "title": "Browser AI Bridge: Ask" },
+      { "command": "browserAiBridge.explain", "title": "Browser AI Bridge: Explain Selection" },
+      { "command": "browserAiBridge.fix", "title": "Browser AI Bridge: Fix Selection" },
+      { "command": "browserAiBridge.refactor", "title": "Browser AI Bridge: Refactor Selection" },
+      { "command": "browserAiBridge.optimize", "title": "Browser AI Bridge: Optimize Selection" }
+    ]
+  },
+  "scripts": {
+    "compile": "tsc -p tsconfig.json"
+  },
+  "type": "commonjs"
+}
